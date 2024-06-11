@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "54bc9e05-041e-4a7b-9d15-396662bc104b",
+		"_postman_id": "b46a1ddf-06e2-414c-a043-c160cccdd05b",
 		"name": "consume_offerings",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29825884"
@@ -171,7 +171,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "[\r\n  {\r\n  \"@type\" : \"ids:Permission\",\r\n  \"@id\" : \"{{createdRuleURL}}\",\r\n  \"ids:description\" : [ {\r\n  \"@value\" : \"provide-access\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:title\" : [ {\r\n  \"@value\" : \"Example Usage Policy\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:action\" : [ {\r\n  \"@id\" : \"https://w3id.org/idsa/code/USE\"\r\n  } ],\r\n  \"ids:target\": \"{{artifactURL}}\"\r\n  }\r\n]",
+					"raw": "[\r\n  {\r\n  \"@type\" : \"ids:Permission\",\r\n  \"@id\" : \"{{createdRuleURL}}\",\r\n  \"ids:description\" : [ {\r\n  \"@value\" : \"provide-access\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:title\" : [ {\r\n  \"@value\" : \"Example Usage Policy\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:action\" : [ {\r\n  \"@id\" : \"https://w3id.org/idsa/code/USE\"\r\n  } ],\r\n  \"ids:target\": \"{{createdArtifactURL}}\"\r\n  }\r\n]",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -179,7 +179,7 @@
 					}
 				},
 				"url": {
-					"raw": "{{consumerConnectorURL}}/api/ids/contract",
+					"raw": "{{consumerConnectorURL}}/api/ids/contract?recipient={{dataProviderAccessURL}}&resourceIds={{createdResourceURL}}&artifactIds={{createdArtifactURL}}&download=false",
 					"host": [
 						"{{consumerConnectorURL}}"
 					],

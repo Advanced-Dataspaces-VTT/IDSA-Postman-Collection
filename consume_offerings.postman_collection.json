@@ -139,9 +139,12 @@
 							"\r",
 							"pm.environment.set(\"createdAgreementURL\", agreementURL.replace('{?page,size}',''));\r",
 							"\r",
+							"console.log(pm.response.json()); // Log the response from the previous request\r",
+							"console.log(pm.environment.get(\"createdCatalogURL\")); // Log the value of the variable \r",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -220,9 +223,11 @@
 							"pm.environment.set(\"createdArtifactDataUrl\", artifactDataUrl);\r",
 							"\r",
 							"\r",
-							""
+							"console.log(pm.response.json()); // Log the response from the previous request\r",
+							"console.log(pm.environment.get(\"createdAgreementURL\")); // Log the value of the variable"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

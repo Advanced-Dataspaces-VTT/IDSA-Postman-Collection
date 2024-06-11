@@ -2,6 +2,11 @@
 
 This repository contains two Postman collections: `provide_offerings.postman_collection.json` and `consume_offerings.postman_collection.json`, and an environment file `connector.postman_environment.json`. These collections are used to simulate the process of providing and consuming data offerings.
 
+## Connectors
+
+- Provider Connector: [https://ds2provider.collab-cloud.eu:8081](https://ds2provider.collab-cloud.eu:8081)
+- Consumer Connector: [https://ds2consumer.collab-cloud.eu:8081](https://ds2consumer.collab-cloud.eu:8081)
+
 ## Setup
 
 Before running the collections, you need to import the environment file:

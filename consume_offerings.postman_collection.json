@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "54bc9e05-041e-4a7b-9d15-396662bc104b",
-		"name": "comsume_offerings",
+		"name": "consume_offerings",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29825884"
 	},
@@ -74,21 +74,22 @@
 							"const artifactURL = response[\"ids:offeredResource\"]?.[0]?.[\"ids:representation\"]?.[0]?.[\"ids:instance\"]?.[0]?.[\"@id\"];",
 							"",
 							"if (offerURL) {",
-							"    pm.collectionVariables.set(\"offerURL\", offerURL);",
+							"    pm.environment.set(\"offerURL\", offerURL);",
 							"    console.log(\"Offer URL:\", offerURL);",
 							"} else {",
 							"    console.log(\"No Offer URL found.\");",
 							"}",
 							"",
 							"if (artifactURL) {",
-							"    pm.collectionVariables.set(\"artifactURL\", artifactURL);",
+							"    pm.environment.set(\"artifactURL\", artifactURL);",
 							"    console.log(\"Artifact URL:\", artifactURL);",
 							"} else {",
 							"    console.log(\"No Artifact URL found.\");",
 							"}",
 							""
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],

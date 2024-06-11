@@ -39,6 +39,10 @@ The variables required by this collection will be automatically extracted from t
 
 Ensure that the option to persist the response body is enabled in the Postman settings. This will allow the final request, "Get Artifact", to display the data of the offering.
 
+## Video Demo
+
+For a visual guide on how to run these collections, please refer to the video demo `Automated runner demo.mov` included in this repository.
+
 ## Note
 
 Make sure to run the `provide_offerings.postman_collection.json` collection before the `consume_offerings.postman_collection.json` collection, as the latter depends on the data provided by the former.

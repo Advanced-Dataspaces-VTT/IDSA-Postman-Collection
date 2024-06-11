@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "5d117a88-ab9b-45b7-b23d-d3e2ca1a84f5",
-		"name": "Provide example data",
+		"name": "provide_offerings",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29825884"
 	},
@@ -13,17 +13,16 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"const createdCatalogURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
+							"const response = pm.response.json();\r",
+							"const createdCatalogURL = response[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdCatalogURL);\r",
-							"console.log(createdCatalogURL.substring(createdCatalogURL.lastIndexOf('/') + 1));\r",
+							"const createdCatalogID = createdCatalogURL.substring(createdCatalogURL.lastIndexOf('/') + 1);\r",
 							"\r",
-							"\r",
-							"pm.collectionVariables.set(\"createdCatalogURL\", createdCatalogURL);\r",
-							"pm.collectionVariables.set(\"createdCatalogID\", createdCatalogURL.substring(createdCatalogURL.lastIndexOf('/') + 1));"
+							"pm.environment.set(\"createdCatalogURL\", createdCatalogURL);\r",
+							"pm.environment.set(\"createdCatalogID\", createdCatalogID);\r",
+							""
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -66,15 +65,11 @@
 						"exec": [
 							"const createdRepresentationURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdRepresentationURL);\r",
-							"console.log(createdRepresentationURL.substring(createdRepresentationURL.lastIndexOf('/') + 1));\r",
-							"\r",
-							"pm.collectionVariables.set(\"createdRepresentationURL\", createdRepresentationURL);\r",
-							"pm.collectionVariables.set(\"createdRepresentationID\", createdRepresentationURL.substring(createdRepresentationURL.lastIndexOf('/') + 1));\r",
+							"pm.environment.set(\"createdRepresentationURL\", createdRepresentationURL);\r",
+							"pm.environment.set(\"createdRepresentationID\", createdRepresentationURL.substring(createdRepresentationURL.lastIndexOf('/') + 1));\r",
 							""
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -115,14 +110,10 @@
 						"exec": [
 							"const createdResourceURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdResourceURL);\r",
-							"console.log(createdResourceURL.substring(createdResourceURL.lastIndexOf('/') + 1));\r",
-							"\r",
-							"pm.collectionVariables.set(\"createdResourceURL\", createdResourceURL);\r",
-							"pm.collectionVariables.set(\"createdResourceID\", createdResourceURL.substring(createdResourceURL.lastIndexOf('/') + 1));"
+							"pm.environment.set(\"createdResourceURL\", createdResourceURL);\r",
+							"pm.environment.set(\"createdResourceID\", createdResourceURL.substring(createdResourceURL.lastIndexOf('/') + 1));"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -227,14 +218,10 @@
 						"exec": [
 							"const createdContractURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdContractURL);\r",
-							"console.log(createdContractURL.substring(createdContractURL.lastIndexOf('/') + 1));\r",
-							"\r",
-							"pm.collectionVariables.set(\"createdContractURL\", createdContractURL);\r",
-							"pm.collectionVariables.set(\"createdContractID\", createdContractURL.substring(createdContractURL.lastIndexOf('/') + 1));"
+							"pm.environment.set(\"createdContractURL\", createdContractURL);\r",
+							"pm.environment.set(\"createdContractID\", createdContractURL.substring(createdContractURL.lastIndexOf('/') + 1));"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -272,14 +259,11 @@
 						"exec": [
 							"const createdRuleURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdRuleURL);\r",
-							"console.log(createdRuleURL.substring(createdRuleURL.lastIndexOf('/') + 1));\r",
 							"\r",
-							"pm.collectionVariables.set(\"createdRuleURL\", createdRuleURL);\r",
-							"pm.collectionVariables.set(\"createdRuleID\", createdRuleURL.substring(createdRuleURL.lastIndexOf('/') + 1));"
+							"pm.environment.set(\"createdRuleURL\", createdRuleURL);\r",
+							"pm.environment.set(\"createdRuleID\", createdRuleURL.substring(createdRuleURL.lastIndexOf('/') + 1));"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -384,14 +368,10 @@
 						"exec": [
 							"const createdArtifactURL = pm.response.json()[\"_links\"][\"self\"][\"href\"];\r",
 							"\r",
-							"console.log(createdArtifactURL);\r",
-							"console.log(createdArtifactURL.substring(createdArtifactURL.lastIndexOf('/') + 1));\r",
-							"\r",
-							"pm.collectionVariables.set(\"createdArtifactURL\", createdArtifactURL);\r",
-							"pm.collectionVariables.set(\"createdArtifactID\", createdArtifactURL.substring(createdArtifactURL.lastIndexOf('/') + 1));"
+							"pm.environment.set(\"createdArtifactURL\", createdArtifactURL);\r",
+							"pm.environment.set(\"createdArtifactID\", createdArtifactURL.substring(createdArtifactURL.lastIndexOf('/') + 1));"
 						],
-						"type": "text/javascript",
-						"packages": {}
+						"type": "text/javascript"
 					}
 				}
 			],
@@ -489,61 +469,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "connectorURL",
-			"value": "https://ds2provider.collab-cloud.eu:8081",
-			"type": "string"
-		},
-		{
-			"key": "createdCatalogURL",
-			"value": ""
-		},
-		{
-			"key": "createdRepresentationURL",
-			"value": ""
-		},
-		{
-			"key": "createdResourceURL",
-			"value": ""
-		},
-		{
-			"key": "createdCatalogID",
-			"value": ""
-		},
-		{
-			"key": "createdResourceID",
-			"value": ""
-		},
-		{
-			"key": "createdContractURL",
-			"value": ""
-		},
-		{
-			"key": "createdContractID",
-			"value": ""
-		},
-		{
-			"key": "createdRuleURL",
-			"value": ""
-		},
-		{
-			"key": "createdRuleID",
-			"value": ""
-		},
-		{
-			"key": "createdArtifactURL",
-			"value": ""
-		},
-		{
-			"key": "createdArtifactID",
-			"value": ""
-		},
-		{
-			"key": "createdRepresentationID",
-			"value": ""
 		}
 	]
 }

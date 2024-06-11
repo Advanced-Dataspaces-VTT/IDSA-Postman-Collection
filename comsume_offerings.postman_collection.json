@@ -1,0 +1,337 @@
+{
+	"info": {
+		"_postman_id": "54bc9e05-041e-4a7b-9d15-396662bc104b",
+		"name": "comsume_offerings",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29825884"
+	},
+	"item": [
+		{
+			"name": "Description request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{consumerConnectorURL}}/api/ids/description?recipient={{dataProviderAccessURL}}",
+					"host": [
+						"{{consumerConnectorURL}}"
+					],
+					"path": [
+						"api",
+						"ids",
+						"description"
+					],
+					"query": [
+						{
+							"key": "recipient",
+							"value": "{{dataProviderAccessURL}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Description request with catalogue",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();",
+							"",
+							"const offerURL = response[\"ids:offeredResource\"]?.[0]?.[\"@id\"];",
+							"const artifactURL = response[\"ids:offeredResource\"]?.[0]?.[\"ids:representation\"]?.[0]?.[\"ids:instance\"]?.[0]?.[\"@id\"];",
+							"",
+							"if (offerURL) {",
+							"    pm.collectionVariables.set(\"offerURL\", offerURL);",
+							"    console.log(\"Offer URL:\", offerURL);",
+							"} else {",
+							"    console.log(\"No Offer URL found.\");",
+							"}",
+							"",
+							"if (artifactURL) {",
+							"    pm.collectionVariables.set(\"artifactURL\", artifactURL);",
+							"    console.log(\"Artifact URL:\", artifactURL);",
+							"} else {",
+							"    console.log(\"No Artifact URL found.\");",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{consumerConnectorURL}}/api/ids/description?recipient={{dataProviderAccessURL}}&elementId={{createdCatalogURL}}",
+					"host": [
+						"{{consumerConnectorURL}}"
+					],
+					"path": [
+						"api",
+						"ids",
+						"description"
+					],
+					"query": [
+						{
+							"key": "recipient",
+							"value": "{{dataProviderAccessURL}}"
+						},
+						{
+							"key": "elementId",
+							"value": "{{createdCatalogURL}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Contract request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const agreementURL = pm.response.json()[\"_links\"][\"artifacts\"][\"href\"];\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"createdAgreementURL\", agreementURL.replace('{?page,size}',''));\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n  {\r\n  \"@type\" : \"ids:Permission\",\r\n  \"@id\" : \"{{createdRuleURL}}\",\r\n  \"ids:description\" : [ {\r\n  \"@value\" : \"provide-access\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:title\" : [ {\r\n  \"@value\" : \"Example Usage Policy\",\r\n  \"@type\" : \"http://www.w3.org/2001/XMLSchema#string\"\r\n  } ],\r\n  \"ids:action\" : [ {\r\n  \"@id\" : \"https://w3id.org/idsa/code/USE\"\r\n  } ],\r\n  \"ids:target\": \"{{artifactURL}}\"\r\n  }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{consumerConnectorURL}}/api/ids/contract",
+					"host": [
+						"{{consumerConnectorURL}}"
+					],
+					"path": [
+						"api",
+						"ids",
+						"contract"
+					],
+					"query": [
+						{
+							"key": "recipient",
+							"value": "{{dataProviderAccessURL}}"
+						},
+						{
+							"key": "resourceIds",
+							"value": "{{createdResourceURL}}"
+						},
+						{
+							"key": "artifactIds",
+							"value": "{{createdArtifactURL}}"
+						},
+						{
+							"key": "download",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Agreement",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"const artifactDataUrl = pm.response.json()[\"_embedded\"][\"artifacts\"][0][\"_links\"][\"data\"][\"href\"];\r",
+							"\r",
+							"pm.environment.set(\"createdArtifactDataUrl\", artifactDataUrl);\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{createdAgreementURL}}",
+					"host": [
+						"{{createdAgreementURL}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get artifact (data)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"strictSSL": false
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{createdArtifactDataUrl}}",
+					"host": [
+						"{{createdArtifactDataUrl}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey"
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

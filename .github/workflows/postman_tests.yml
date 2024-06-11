@@ -19,7 +19,7 @@ jobs:
           run: npm install -g newman
 
         - name: Run Postman Collections
-          run: newman run make_offering.postman_collection.json -e connector.postman_environment.json
+          run: newman run provide_offering.postman_collection.json -e connector.postman_environment.json --reporters cli
 
     test_consume_data_resource_collection:
         runs-on: ubuntu-latest
@@ -37,4 +37,4 @@ jobs:
           run: npm install -g newman
 
         - name: Run Postman Collections
-          run: newman run make_offering.postman_collection.json -e connector.postman_environment.json
+          run: newman run consume_offering.postman_collection.json -e connector.postman_environment.json --reporters cli

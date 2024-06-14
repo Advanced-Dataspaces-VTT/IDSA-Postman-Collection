@@ -383,7 +383,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"title\": \"Artifact1-for-example-Api\",\r\n  \"description\": \"Example on how to create artifacts that dynamically fetch data from example API\",\r\n  \"accessUrl\": \"https://v2.jokeapi.dev/joke/Any\",\r\n  \"automatedDownload\": false\r\n}",
+					"raw": "{\r\n  \"title\": \"Artifact1-for-example-Api\",\r\n  \"description\": \"Example on how to create artifacts that dynamically fetch data from example API\",\r\n  \"accessUrl\": \"http://universities.hipolabs.com/search?name=europe\",\r\n  \"automatedDownload\": false\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
